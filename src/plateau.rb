@@ -1,4 +1,4 @@
-require File.expand_path('rover', __dir__)
+require_relative 'rover'
 
 class Plateau
   attr_reader :height, :width, :rovers

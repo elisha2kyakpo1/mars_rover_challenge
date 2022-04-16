@@ -1,4 +1,4 @@
-require File.expand_path('../lib/plateau', __dir__)
+require_relative '..//plateau'
 
 class App
   def initialize(type, input = '')
