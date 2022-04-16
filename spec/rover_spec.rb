@@ -1,76 +1,78 @@
+require 'spec_helper'
+
 require_relative '../lib/rover'
-require_relative '../lib/custom_exceptions'
+require_relative '../lib/exceptions'
 
 describe Rover do
   describe 'Creation' do
-    it 'should be in its initial position when initialized' do
+    it 'is in its initial position when initialized' do
       rover = Rover.new
-      rover.x_axis.should eql(0)
-      rover.y_axis.should eql(0)
-      rover.direction.should eql('N')
+      expect(rover.x_axis).to eql(0)
+      expect(rover.y_axis).to eql(0)
+      expect(rover.direction).to eql('N')
     end
 
-    it 'should have the position passed on creation' do
+    it 'has the position passed on creation' do
       rover = Rover.new(2, 3, 'S')
-      rover.x_axis.should eql(2)
-      rover.y_axis.should eql(3)
-      rover.direction.should eql('S')
+      (rover.x_axis).to be(2)
+      (rover.y_axis).to eql(3)
+      (rover.direction).to eql('S')
     end
   end
 
   describe 'Move' do
-    it 'should update its postion to the given displacement' do
+    it 'update its postion to the given displacement' do
       rover = Rover.new(1, 5)
       rover.move(1, 2)
-      rover.x_axis.should eql(1)
-      rover.y_axis.should eql(7)
+      (rover.x_axis).to eql(1)
+      (rover.y_axis).to eql(7)
       rover.move(8, -2)
-      rover.x_axis.should eql(1)
-      rover.y_axis.should eql(5)
+      (rover.x_axis).to eql(1)
+      (rover.y_axis).to eql(5)
     end
   end
 
   describe 'Rotate' do
-    it 'should turn to left' do
+    it 'turn to left' do
       rover = Rover.new(1, 5, 'S')
-      rover.rotate('L')
-      rover.direction.should eql('E')
-      rover.rotate('L')
-      rover.direction.should eql('N')
-      rover.rotate('L')
-      rover.direction.should eql('W')
-      rover.rotate('L')
-      rover.direction.should eql('S')
+      rover.change_direction('L')
+      (rover.direction).to eql('E')
+      rover.change_direction('L')
+      (rover.direction).to eql('N')
+      rover.change_direction('L')
+      (rover.direction).to eql('W')
+      rover.change_direction('L')
+      (rover.direction).to eql('S')
     end
 
-    it 'should turn to left' do
+    it 'turn to left' do
       rover = Rover.new(1, 5, 'N')
-      rover.rotate('R')
-      rover.direction.should eql('E')
-      rover.rotate('R')
-      rover.direction.should eql('S')
-      rover.rotate('R')
-      rover.direction.should eql('W')
-      rover.rotate('R')
-      rover.direction.should eql('N')
+      rover.change_direction('R')
+      (rover.direction).to be('E')
+      rover.change_direction('R')
+      (rover.direction).to eql('S')
+      rover.change_direction('R')
+      (rover.direction).to eql('W')
+      rover.change_direction('R')
+      (rover.direction).to eql('N')
     end
 
-    it 'should turn left and right' do
+    it 'turn left and right' do
       rover = Rover.new(1, 5, 'N')
-      rover.rotate('R')
-      rover.direction.should eql('E')
-      rover.rotate('L')
-      rover.direction.should eql('N')
+      rover.change_direction('R')
+      (rover.direction).to eql('E')
+      rover.change_direction('L')
+      (rover.direction).to eql('N')
     end
   end
 
   describe 'Rotate and move' do
-    it 'should turn and move' do
+    it 'turn and move' do
       rover = Rover.new(3, 5, 'W')
-      rover.rotate('L')
+      rover.change_direction('L')
       rover.move(5, 4)
-      rover.x_axis.should eql(3)
-      rover.y_axis.should eql(1)
+      (rover.x_axis).to eql(3)
+      (rover.y_axis).to eql(1)
     end
   end
 
@@ -81,26 +83,26 @@ describe Rover do
       rover.control_signal('M')
       rover.control_signal('L')
       rover.control_signal('M')
-      rover.x_axis.should eql(2)
-      rover.y_axis.should eql(4)
-      rover.direction.should eql('S')
+      (rover.x_axis).to eql(2)
+      (rover.y_axis).to eql(4)
+      (rover.direction).to eql('S')
     end
   end
 
   describe 'Validation' do
-    it 'should raise invalid position exception' do
+    it 'raise invalid position exception' do
       lambda do
         Rover.new('a', 3, 'N')
       end.should raise_error InvalidPosition
     end
 
-    it 'should raise invalid direction exception' do
+    it 'raise invalid direction exception' do
       lambda do
         Rover.new(1, 3, 'Z')
       end.should raise_error InvalidDirection
     end
 
-    it 'should raise invalid control signal' do
+    it 'raise invalid control signal' do
       rover = Rover.new(1, 3, 'N')
       lambda do
         rover.control_signal('k')

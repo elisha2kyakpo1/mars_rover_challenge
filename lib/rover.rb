@@ -1,3 +1,4 @@
+
 class Rover
   TURN = { 'L' => -90, 'R' => 90 }.freeze
   DIRECTION = { 'N' => 0, 'E' => 90, 'S' => 180, 'W' => 270 }.freeze
