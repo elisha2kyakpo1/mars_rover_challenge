@@ -6,7 +6,7 @@ rover1 = Rover.new(1, 3, 'N')
 end
 puts "Position = #{rover1.x_axis}, #{rover1.y_axis} #{rover1.direction}"
 
-rover2 = Rover.new(3, 5, 7)
+rover2 = Rover.new(3, 5, 'E')
 %w[M M R M M R M R R M].each do |command|
   rover2.control_signal(command)
 end

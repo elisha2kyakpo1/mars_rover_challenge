@@ -14,9 +14,9 @@ describe Rover do
 
     it 'has the position passed on creation' do
       rover = Rover.new(2, 3, 'S')
-      (rover.x_axis).to be(2)
-      (rover.y_axis).to eql(3)
-      (rover.direction).to eql('S')
+      expect(rover.x_axis).to be(2)
+      expect(rover.y_axis).to eql(3)
+      expect(rover.direction).to eql('S')
     end
   end
 
@@ -24,45 +24,33 @@ describe Rover do
     it 'update its postion to the given displacement' do
       rover = Rover.new(1, 5)
       rover.move(1, 2)
-      (rover.x_axis).to eql(1)
-      (rover.y_axis).to eql(7)
+      expect(rover.x_axis).to eql(1)
+      expect(rover.y_axis).to eql(7)
       rover.move(8, -2)
-      (rover.x_axis).to eql(1)
-      (rover.y_axis).to eql(5)
+      expect(rover.x_axis).to eql(1)
+      expect(rover.y_axis).to eql(5)
     end
   end
 
   describe 'Rotate' do
     it 'turn to left' do
-      rover = Rover.new(1, 5, 'S')
-      rover.change_direction('L')
-      (rover.direction).to eql('E')
-      rover.change_direction('L')
-      (rover.direction).to eql('N')
-      rover.change_direction('L')
-      (rover.direction).to eql('W')
-      rover.change_direction('L')
-      (rover.direction).to eql('S')
-    end
-
-    it 'turn to left' do
       rover = Rover.new(1, 5, 'N')
       rover.change_direction('R')
-      (rover.direction).to be('E')
+      expect(rover.direction).to eql('E')
       rover.change_direction('R')
-      (rover.direction).to eql('S')
+      expect(rover.direction).to eql('S')
       rover.change_direction('R')
-      (rover.direction).to eql('W')
+      expect(rover.direction).to eql('W')
       rover.change_direction('R')
-      (rover.direction).to eql('N')
+      expect(rover.direction).to eql('N')
     end
 
     it 'turn left and right' do
       rover = Rover.new(1, 5, 'N')
       rover.change_direction('R')
-      (rover.direction).to eql('E')
+      expect(rover.direction).to eql('E')
       rover.change_direction('L')
-      (rover.direction).to eql('N')
+      expect(rover.direction).to eql('N')
     end
   end
 
@@ -71,8 +59,8 @@ describe Rover do
       rover = Rover.new(3, 5, 'W')
       rover.change_direction('L')
       rover.move(5, 4)
-      (rover.x_axis).to eql(3)
-      (rover.y_axis).to eql(1)
+      expect(rover.x_axis).to eql(3)
+      expect(rover.y_axis).to eql(1)
     end
   end
 
@@ -83,9 +71,9 @@ describe Rover do
       rover.control_signal('M')
       rover.control_signal('L')
       rover.control_signal('M')
-      (rover.x_axis).to eql(2)
-      (rover.y_axis).to eql(4)
-      (rover.direction).to eql('S')
+      expect(rover.x_axis).to equal(2)
+      expect(rover.y_axis).to eql(4)
+      expect(rover.direction).to eql('S')
     end
   end
 
