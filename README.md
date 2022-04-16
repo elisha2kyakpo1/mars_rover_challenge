@@ -62,7 +62,7 @@ N/A
 
 ## Built With
 
-- Ruby 3.0.0
+- Ruby
 - Rspec
 
 ## Getting Started
