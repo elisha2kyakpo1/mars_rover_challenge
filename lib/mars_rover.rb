@@ -27,10 +27,10 @@ class MarsRover
     move(1, 1) and return if command == 'M'
   end
 
-  def move(displacement_x, displacement_y)
+  def move(x_displacent, y_displacent)
     set_direction_cordinates
-    @x_axis += displacement_x * @direction_x
-    @y_axis += displacement_y * @direction_y
+    @x_axis += x_displacent * @x_direction
+    @y_axis += y_displacent * @y_direction
   end
 
   def change_direction(turn)
@@ -49,8 +49,8 @@ class MarsRover
   end
 
   def set_direction_cordinates
-    @direction_x = DIRECTION_COORDINATES[@direction][0]
-    @direction_y = DIRECTION_COORDINATES[@direction][1]
+    @x_direction = DIRECTION_COORDINATES[@direction][0]
+    @y_direction = DIRECTION_COORDINATES[@direction][1]
   end
 
   def valid_position(x_axis, y_axis)
