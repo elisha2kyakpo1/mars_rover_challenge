@@ -5,8 +5,8 @@ class Rover
     @plateau = plateau
 
     @state = {
-      x:    input.shift.to_i,
-      y:    input.shift.to_i,
+      x: input.shift.to_i,
+      y: input.shift.to_i,
       face: input.shift
     }
 
@@ -15,9 +15,9 @@ class Rover
 
   def act(action)
     case action
-      when 'L' then turn_left
-      when 'R' then turn_right
-      when 'M' then move_forward
+    when 'L' then turn_left
+    when 'R' then turn_right
+    when 'M' then move_forward
     end
   end
 
@@ -35,29 +35,29 @@ class Rover
 
   def turn_right
     @state[:face] = case @state[:face]
-      when 'N' then 'E'
-      when 'E' then 'S'
-      when 'S' then 'W'
-      when 'W' then 'N'
-    end
+                    when 'N' then 'E'
+                    when 'E' then 'S'
+                    when 'S' then 'W'
+                    when 'W' then 'N'
+                    end
   end
 
   def turn_left
     @state[:face] = case @state[:face]
-      when 'N' then 'W'
-      when 'W' then 'S'
-      when 'S' then 'E'
-      when 'E' then 'N'
-    end
+                    when 'N' then 'W'
+                    when 'W' then 'S'
+                    when 'S' then 'E'
+                    when 'E' then 'N'
+                    end
   end
 
   def move_forward
     x, y = case @state[:face]
-      when 'N' then [0, 1]
-      when 'S' then [0, -1]
-      when 'E' then [1, 0]
-      when 'W' then [-1, 0]
-    end
+           when 'N' then [0, 1]
+           when 'S' then [0, -1]
+           when 'E' then [1, 0]
+           when 'W' then [-1, 0]
+           end
 
     new_x = @state[:x] + x
     new_y = @state[:y] + y
@@ -68,4 +68,3 @@ class Rover
     end
   end
 end
-

@@ -1,7 +1,7 @@
-require File.expand_path('../../lib/plateau', __FILE__)
+require File.expand_path('../lib/plateau', __dir__)
 
 class App
-  def initialize(type, input = "")
+  def initialize(type, input = '')
     @type = type
     @input = input
   end
@@ -20,4 +20,3 @@ class App
     puts plateau
   end
 end
-
