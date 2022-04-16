@@ -54,14 +54,14 @@ class Rover
   end
 
   def valid_position(x_axis, y_axis)
-    raise InvalidPosition.new, 'Position should be a number' unless x_axis.is_a?(Integer) || y_axis.is_a?(Integer)
+    raise InvalidPosition, 'Position should be a number' unless x_axis.is_a?(Integer) || y_axis.is_a?(Integer)
   end
 
   def valid_direction(direction)
-    raise InvalidDirection.new, 'Invalid direction input ' unless DIRECTION.keys.include?(direction)
+    raise InvalidDirection, 'Invalid direction input ' unless DIRECTION.keys.include?(direction)
   end
 
   def valid_control_signal(command)
-    raise InvalidControlSignal.new, 'Invalid signal control' unless (TURN.keys + ['M']).include?(command)
+    raise InvalidControlSignal, 'Invalid signal control' unless (TURN.keys + ['M']).include?(command)
   end
 end

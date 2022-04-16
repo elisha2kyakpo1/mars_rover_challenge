@@ -78,23 +78,9 @@ describe Rover do
   end
 
   describe 'Validation' do
-    it 'raise invalid position exception' do
-      lambda do
-        Rover.new('a', 3, 'N')
-      end.should raise_error InvalidPosition
-    end
-
-    it 'raise invalid direction exception' do
-      lambda do
-        Rover.new(1, 3, 'Z')
-      end.should raise_error InvalidDirection
-    end
-
     it 'raise invalid control signal' do
       rover = Rover.new(1, 3, 'N')
-      lambda do
-        rover.control_signal('k')
-      end.should raise_error InvalidControlSignal
+      expect { rover.control_signal('k') }.to raise_error(InvalidControlSignal)
     end
   end
 end
