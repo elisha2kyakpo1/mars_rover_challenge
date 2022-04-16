@@ -22,7 +22,7 @@ Run the commands below in order to have access and use the project on a local ma
 
 ```cmd
 git clone https://github.com/elisha2kyakpo1/mars_rover_challenge.git
-cd 
+cd mars_rover_challenge
 bundle install
 ```
 
