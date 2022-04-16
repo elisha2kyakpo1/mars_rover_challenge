@@ -1,10 +1,9 @@
 require_relative 'information'
 
 class Rover
-
   attr_reader :x, :y
-  def initialize()
-  end
+
+  def initialize; end
 
   def turn_left
     @heading.left!
@@ -15,21 +14,21 @@ class Rover
   end
 
   def move
-    case self.heading
-      when 'N'
-        move_north
-      when 'S'
-        move_south
-      when 'E'
-        move_east
-      when 'W'
-        move_west
+    case heading
+    when 'N'
+      move_north
+    when 'S'
+      move_south
+    when 'E'
+      move_east
+    when 'W'
+      move_west
     end
   end
 
   def heading=(head)
     @heading = Heading.new(head)
-    self.heading
+    heading
   end
 
   def heading
@@ -42,19 +41,20 @@ class Rover
   end
 
   private
-    def move_north
-      @y = self.y + 1
-    end
 
-    def move_south
-      @y = self.y - 1
-    end
+  def move_north
+    @y = y + 1
+  end
 
-    def move_east
-      @x = self.x + 1
-    end
+  def move_south
+    @y = y - 1
+  end
 
-    def move_west
-      @x = self.x - 1
-    end
+  def move_east
+    @x = x + 1
+  end
+
+  def move_west
+    @x = x - 1
+  end
 end

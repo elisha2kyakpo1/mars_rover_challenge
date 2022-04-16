@@ -53,7 +53,6 @@ class InputProcessor
     instructions_to_rover[idx].each do |instruction|
       process_instruction(rover, instruction)
     end
-
   end
 
   protected

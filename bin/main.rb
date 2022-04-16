@@ -8,4 +8,3 @@ unless input.empty?
   processor = InputProcessor.new(input, $stdin)
   processor.process
 end
-
