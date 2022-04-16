@@ -1,8 +1,8 @@
-class InvalidPosition < RuntimeError
+class InvalidPosition < StandardError
 end
 
-class InvalidDirection < RuntimeError
+class InvalidDirection < StandardError
 end
 
-class InvalidControlSignal < RuntimeError
+class InvalidControlSignal < StandardError
 end
