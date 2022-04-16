@@ -1,14 +1,14 @@
 require_relative 'information'
 
 class Rover
-  attr_reader :x_axis, :y_axis
+  attr_reader :x_axis, :y_axis, :position
 
   def turn_left
-    @direction.left!
+    @position.left!
   end
 
   def turn_right
-    @direction.right!
+    @position.right!
   end
 
   def move
@@ -22,15 +22,6 @@ class Rover
     when 'W'
       move_west
     end
-  end
-
-  def direction_heading=(face)
-    @input = RoverInput.new(face)
-    direction
-  end
-
-  def direction_heading
-    @input&.direction
   end
 
   def rover_position(x_axis, y_axis)
