@@ -82,7 +82,7 @@ bundle install
 
 ## Available Scripts
 
-In the project directory, you can run to test the project:
+In the project directory, you can run to run the project:
 
 ### `Ruby bin/main.rb`
 
