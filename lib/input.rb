@@ -11,7 +11,7 @@ class InputProcessor
   def process
     @rovers.each_with_index do |rover, idx|
       move_rover(idx)
-      @output.puts "#{rover.x} #{rover.y} #{rover.heading}"
+      @output.puts "#{rover.x} #{rover.y} #{rover.direction_heading}"
 
       if rover.x.negative? || rover.y.negative? || rover.x > plateau.width || rover.y > plateau.height
         @err.puts "Warning: You are OUT of the plateau (#{rover.x}, #{rover.y})"

@@ -1,20 +1,18 @@
 require_relative 'information'
 
 class Rover
-  attr_reader :x, :y
-
-  def initialize; end
+  attr_reader :x_axis, :y_axis
 
   def turn_left
-    @heading.left!
+    @direction.left!
   end
 
   def turn_right
-    @heading.right!
+    @direction.right!
   end
 
   def move
-    case heading
+    case direction
     when 'N'
       move_north
     when 'S'
@@ -26,35 +24,35 @@ class Rover
     end
   end
 
-  def heading=(head)
-    @heading = Heading.new(head)
-    heading
+  def direction_heading=(face)
+    @input = RoverInput.new(face)
+    direction
   end
 
-  def heading
-    @heading && @heading.direction
+  def direction_heading
+    @input&.direction
   end
 
-  def position(x, y)
-    @x = x
-    @y = y
+  def rover_position(x_axis, y_axis)
+    @x = x_axis
+    @y = y_axis
   end
 
   private
 
   def move_north
-    @y = y + 1
+    @y = y_axis + 1
   end
 
   def move_south
-    @y = y - 1
+    @y = y_axis - 1
   end
 
   def move_east
-    @x = x + 1
+    @x = x_axis + 1
   end
 
   def move_west
-    @x = x - 1
+    @x = x_axis - 1
   end
 end
