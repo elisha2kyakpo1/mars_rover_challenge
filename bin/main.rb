@@ -1,33 +1,13 @@
-#!/usr/bin/env ruby
+require_relative '../lib/rover'
 
-require_relative '../lib/input'
-
-input = $stdin.read
-
-unless input.empty?
-  processor = InputProcessor.new(input, $stdin)
-  processor.process
+rover1 = Rover.new(1, 3, 'N')
+%w[L M L M L M L M M].each do |command|
+  rover1.control_signal(command)
 end
+puts "Position = #{rover1.x_axis}, #{rover1.y_axis} #{rover1.direction}"
 
-# rover = Rover.new('1 2 N')
-# puts '************INITIALMOVES************'
-# puts rover.x_coordinate
-# puts rover.y_coordinate
-# puts rover.direction
-# puts '************VALUES AFTER MOVE LEFT************'
-# rover.command('LMLMLMLMM')
-# puts rover.x_coordinate
-# puts rover.y_coordinate
-# puts rover.direction
-
-# rover2 = Rover.new('3 3 E')
-# puts '>>>>>>>>>>>>************INITIALMOVES************<<<<<<<<<<<<<<'
-# puts rover2.x_coordinate
-# puts rover2.y_coordinate
-# puts rover2.direction
-
-# puts '*************VAUES AFTER MOVE RIGHT***********'
-# rover2.command('MMRMMRMRRM')
-# puts rover2.x_coordinate
-# puts rover2.y_coordinate
-# puts rover2.direction
+rover2 = Rover.new(3, 5, 'S')
+%w[M M R M M R M R R M].each do |command|
+  rover2.control_signal(command)
+end
+puts "Position = #{rover2.x_axis}, #{rover2.y_axis} #{rover2.direction}"
