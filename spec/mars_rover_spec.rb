@@ -1,19 +1,19 @@
 require 'spec_helper'
 
-require_relative '../lib/rover'
+require_relative '../lib/mars_rover'
 require_relative '../lib/exceptions'
 
-describe Rover do
+describe MarsRover do
   describe 'Creation' do
     it 'is in its initial position when initialized' do
-      rover = Rover.new
+      rover = MarsRover.new
       expect(rover.x_axis).to eql(0)
       expect(rover.y_axis).to eql(0)
       expect(rover.direction).to eql('N')
     end
 
     it 'has the position passed on creation' do
-      rover = Rover.new(2, 3, 'S')
+      rover = MarsRover.new(2, 3, 'S')
       expect(rover.x_axis).to be(2)
       expect(rover.y_axis).to eql(3)
       expect(rover.direction).to eql('S')
@@ -22,7 +22,7 @@ describe Rover do
 
   describe 'Move' do
     it 'update its postion to the given displacement' do
-      rover = Rover.new(1, 5)
+      rover = MarsRover.new(1, 5)
       rover.move(1, 2)
       expect(rover.x_axis).to eql(1)
       expect(rover.y_axis).to eql(7)
@@ -34,7 +34,7 @@ describe Rover do
 
   describe 'Rotate' do
     it 'turn to left' do
-      rover = Rover.new(1, 5, 'N')
+      rover = MarsRover.new(1, 5, 'N')
       rover.change_direction('R')
       expect(rover.direction).to eql('E')
       rover.change_direction('R')
@@ -46,7 +46,7 @@ describe Rover do
     end
 
     it 'turn left and right' do
-      rover = Rover.new(1, 5, 'N')
+      rover = MarsRover.new(1, 5, 'N')
       rover.change_direction('R')
       expect(rover.direction).to eql('E')
       rover.change_direction('L')
@@ -56,7 +56,7 @@ describe Rover do
 
   describe 'Rotate and move' do
     it 'turn and move' do
-      rover = Rover.new(3, 5, 'W')
+      rover = MarsRover.new(3, 5, 'W')
       rover.change_direction('L')
       rover.move(5, 4)
       expect(rover.x_axis).to eql(3)
@@ -66,7 +66,7 @@ describe Rover do
 
   describe 'Control signal' do
     it 'gives signals to the rover' do
-      rover = Rover.new(3, 5, 'N')
+      rover = MarsRover.new(3, 5, 'N')
       rover.control_signal('L')
       rover.control_signal('M')
       rover.control_signal('L')
@@ -79,8 +79,8 @@ describe Rover do
 
   describe 'Validation' do
     it 'raise invalid control signal' do
-      rover = Rover.new(1, 3, 'N')
-      expect { rover.control_signal('k') }.to raise_error(InvalidControlSignal)
+      rover = MarsRover.new(1, 3, 'N')
+      expect { rover.control_signal('D') }.to raise_error(InvalidControlSignal)
     end
   end
 end
