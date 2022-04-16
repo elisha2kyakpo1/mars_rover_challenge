@@ -3,6 +3,7 @@ class RoverInput
   VALID_INPUT = %W(N E S W)
 
   attr_reader :direction
+  
   def initialize(direction)
 
     direction = direction.to_s.upcase
