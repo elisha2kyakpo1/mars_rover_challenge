@@ -67,7 +67,7 @@ N/A
 
 ## Getting Started
 
-- You will need to have Zip compress file software installed in your computer. If you don't have it you can download it from here   https://www.7-zip.org/download.html
+- You will need to have Zip compress file software installed in your computer. If you don't have it you can download it from [here](https://www.7-zip.org/download.html)
 - Do double click on the hatchways-main.zip and choose a folder where to place all the decompressed files.
 - Once you are done decompressing, you can open the created folder in a text editor of your choice.
 - To run the project, make sure you have ubuntu/MAC OS installed.
