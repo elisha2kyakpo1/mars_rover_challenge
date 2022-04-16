@@ -1,4 +1,4 @@
-require_relative 'information'
+require_relative 'direction'
 
 class Rover
   attr_reader :x_axis, :y_axis, :position
