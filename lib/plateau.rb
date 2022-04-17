@@ -1,5 +1,4 @@
 class Plateau
-
   GRID_X = 5
   GRID_Y = 5
 
