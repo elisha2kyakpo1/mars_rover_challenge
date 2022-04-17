@@ -6,3 +6,6 @@ end
 
 class InvalidControlSignal < StandardError
 end
+
+class OutOfPlateauError < StandardError
+end
