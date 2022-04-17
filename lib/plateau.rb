@@ -1,4 +1,8 @@
 class Plateau
+
+  GRID_X = 5
+  GRID_Y = 5
+
   def initialize(end_point, x_axis = 0, y_axis = 0)
     @start_point = [x_axis, y_axis]
     @end_point = end_point
@@ -7,19 +11,19 @@ class Plateau
 
   def add_rover(rover)
     @rovers.each do |item|
-      if item.current_position.to_s == rover.current_position.to_s
-        raise DuplicateRoverError, 'The current position has a rover'
-      end
+      raise DuplicateRoverError, 'The current position has a rover' if item.x_axis
     end
-    @rovers.push rover
+    @rovers << rover
   end
 
   def start_rovers
     @rovers.each do |rover|
-      next_move = rover.next_coordinate
-      if next_move.x_axis > @end_point.x_axis || next_move.x_axis.negative? ||
-         next_move.y_axis > @end_point.y_axis || next_move.y_axis.negative?
-        raise OutOfPlateauError, 'The rover is out of plateau'
+      if @x_axis > GRID_X || @y_axis > GRID_Y
+        puts 'Your Rover has reached the upper limit of the grid'
+        abort
+      elsif @x_axis.negative? || @y_axis.negative?
+        puts 'Your Rover has reached the lower limit of the grid'
+        abort
       end
 
       rover.move
