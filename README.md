@@ -72,11 +72,12 @@ N/A
 - Once you are done decompressing, you can open the created folder in a text editor of your choice.
 - To run the project, make sure you have ubuntu/MAC OS installed.
 
-Run the commands below in order to have access and use the project on a local machine.
+Run the commands below in order on command-line to have access and use the project on a local machine.
 
 ```cmd
 git clone https://github.com/elisha2kyakpo1/mars_rover_challenge.git
 cd mars_rover_challenge
+git checkout develop
 bundle install
 ```
 
@@ -88,7 +89,7 @@ In the project directory, you can run to run the project:
 
 ================
 
-### Run test
+### Test the project by running the command below
 
 ```cmd
 rspec
