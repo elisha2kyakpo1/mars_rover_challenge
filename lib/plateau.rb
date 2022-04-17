@@ -7,7 +7,9 @@ class Plateau
 
   def add_rover(rover)
     @rovers.each do |item|
-      raise DuplicateRoverError if item.current_position.to_s == rover.current_position.to_s
+      if item.current_position.to_s == rover.current_position.to_s
+        raise DuplicateRoverError, 'The current position has a rover'
+      end
     end
     @rovers.push rover
   end
@@ -17,7 +19,7 @@ class Plateau
       next_move = rover.next_coordinate
       if next_move.x_axis > @end_point.x_axis || next_move.x_axis.negative? ||
          next_move.y_axis > @end_point.y_axis || next_move.y_axis.negative?
-        raise OutOfPlateauError
+        raise OutOfPlateauError, 'The rover is out of plateau'
       end
 
       rover.move

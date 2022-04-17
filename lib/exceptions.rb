@@ -9,3 +9,6 @@ end
 
 class OutOfPlateauError < StandardError
 end
+
+class OutOfPlateauError < StandardError
+end
