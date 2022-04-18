@@ -1,4 +1,6 @@
 class Plateau
+  attr_accessor :end_point, :x_axis, :y_axis
+
   GRID_X = 5
   GRID_Y = 5
 
